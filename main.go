@@ -86,7 +86,7 @@ func Any(args ...interface{}) (interface{}, error) {
 		if !ok {
 			return false, fmt.Errorf("item is not a map %v", item)
 		}
-		fmt.Printf("sending params in any %v\n", params)
+		// fmt.Printf("sending params in any %v\n", params)
 		result, err := expression.Evaluate(params)
 		if err != nil {
 			panic(err)
@@ -123,7 +123,7 @@ type Flag struct {
 /* end struct analogs */
 
 func main() {
-	fmt.Printf("Hello, World! %v\n", "nothing")
+	// fmt.Printf("Hello, World! %v\n", "nothing")
 
 	expressionString := `regexMatch(tag, "^JIRA:[a-zA-Z]{3}[a-zA-Z]*$")`
 	functions := map[string]govaluate.ExpressionFunction{
@@ -243,12 +243,12 @@ func main() {
 			// map := structs.Map(structExample)
 
 			params := structs.Map(flag)
-			fmt.Printf("params arg %v %v %v %v\n", params, params["Tags"], reflect.TypeOf(params["Tags"]), structExpression)
+			// fmt.Printf("params arg %v %v %v %v\n", params, params["Tags"], reflect.TypeOf(params["Tags"]), structExpression)
 			result, err := structExpression.Evaluate(params)
 			if err != nil {
 				panic(err)
 			}
-			fmt.Printf("is flag (%v) valid? for exp %s, %t\n", structExpressionStrings[expressionIndex], flag, result)
+			fmt.Printf("is flag (%v) valid? for exp %s, %t\n", flag, structExpressionStrings[expressionIndex], result)
 
 		}
 	}
